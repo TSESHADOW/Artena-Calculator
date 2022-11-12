@@ -1,0 +1,9 @@
+1) Install Python (last version) IMPORTANT: Enable the option to add Python to PATH and Disable Lenght Limit
+
+2) Install Tesseract https://github.com/UB-Mannheim/tesseract/wiki 64 bits version
+
+3) Download and extract Artena Calculator 0.5(Beta)
+
+4) Run install.bat
+
+5) Run Artena Calculator tesseract V2 (EN)= english game version (ES)= spanish game version
