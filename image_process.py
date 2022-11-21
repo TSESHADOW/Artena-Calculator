@@ -22,15 +22,22 @@ class GearImage:
             # x1, y1 = win32gui.ClientToScreen(hwnd, (x1 - x, y1 - y))
             # im = pyautogui.screenshot(region=(x, y, x1, y1)) # FOR WINDOWED NONFULLSCREEN? 
             screenshot = pyautogui.screenshot()
-            hwnd = win32gui.FindWindow(None, "Corvus Simulator")
+            hwnd = win32gui.FindWindow(None, "Artena Calculator ver. 0.5")
             win32gui.SetForegroundWindow(hwnd)
         else:
             print('Window not found!')
 
-        # EDIT SCREENSHOT
+        # EDIT SCREENSHOT - put in another function
+        width, height = screenshot.size
+        screenshot = screenshot.crop((width * (26.7/100), height * (53/100), width * (47/100), height * (72/100)))
+
+        width, height = screenshot.size
+
+        screenshot = screenshot.resize((width * 3, height * 3)) 
         screenshot = ImageOps.autocontrast(ImageOps.grayscale(screenshot), cutoff = 2)
         screenshot.save(self.gear_path)
-        text = pytesseract.image_to_string(self.gear_path, config = "--psm 6")
+        # text = pytesseract.image_to_string(self.gear_path, config = "--psm 6")
         # print(text)
+        # screenshot.show()
         return screenshot
 

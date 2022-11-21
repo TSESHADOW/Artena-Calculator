@@ -48,15 +48,13 @@ class Application:
 
     def get_image(self):
         self.image = image_process.GearImage()
-        width, height = self.image.screenshot.size
+
         # print("GOT IMAGE")
         # print(width, height)
 
         # RESCREENSHOT TO CAPTURE SUBSTATS
-        # CURRENTLY WORKS ON INVENTORY GEAR ONLY 
+        # CURRENTLY WORKS ON INVENTORY(+) GEAR ONLY 
 
-        self.image.screenshot = self.image.screenshot.crop((width * (26.7/100), height * (53/100), width * (47/100), height * (72/100)))
-        self.image.screenshot.save(self.image.gear_path)
         text = pytesseract.image_to_string(self.image.gear_path, config = "--psm 6")
         text = text.split('\n')
         self.calculate_from_text(text)
