@@ -1,16 +1,16 @@
 import pytesseract as tsc
 import os
-import time
+# import time
 import pyautogui
 import tkinter as tk
 from tkinter import *
-from tkinter.filedialog import *
+# from tkinter.filedialog import *
 from PIL import Image 
 import numpy as np  
 import win32gui, win32con
 
-hide = win32gui.GetForegroundWindow()
-win32gui.ShowWindow(hide , win32con.SW_HIDE)
+#hide = win32gui.GetForegroundWindow()
+#win32gui.ShowWindow(hide , win32con.SW_HIDE)
 
 
 Puede = "85"
@@ -18,26 +18,24 @@ Refor = ""
 Stats = ""
 GearS = ""
 teseconfig = "--psm 6 --oem 1 -c tessedit_char_blacklist={}()&®©«~;:,."
-Direccion = os.getcwd()+"\\Gearscore"
-Direccion2 = os.getcwd()+"\\Nivel"
+gear_path = os.getcwd() + "/gear_info"
+
 root = tk.Tk()
 root.title("Artena Calculator ver. 0.5")
 root.geometry("300x600")
-root.iconbitmap("artena.ico")
+root.iconbitmap("assets/artena.ico")
 
 
 
 root.resizable(width=False, height=False)
-bg = PhotoImage(file=os.getcwd()+"\\artena.png")
+bg = PhotoImage(file=os.getcwd() + "/assets/artena.png")
 
 
 my_label = Label(root, image=bg)
 my_label.place(x=125, y=0, width=175, height=200)
 
 
-
 root.attributes('-topmost', True)
-
 
 
 def purga(character, texto):
@@ -49,6 +47,7 @@ def purga(character, texto):
 			texto = texto[:index] + texto[index+1:]
 		index = texto.find(character)
 	return texto
+
 
 def reemplazar (character, texto):
 	index = texto.find(character)
@@ -108,10 +107,10 @@ def takeScreenshot2():
 	os.system("cls")
 	myScreenshot = pyautogui.screenshot(region=(550,620, 600, 150))
 	myScreenshot = myScreenshot.resize((2400,600))
-	save_path = Direccion+"\\1.png"
+	save_path = gear_path + "/substats.png"
 	myScreenshot.save(save_path)
-	ruta = Direccion
-	img = Image.open(Direccion+"\\1.png").convert('RGB') 
+	ruta = gear_path
+	img = Image.open(gear_path + "/substats.png").convert('RGB') 
   
 	img_arr = np.array(img) 
   
@@ -119,7 +118,7 @@ def takeScreenshot2():
   
 	img = Image.fromarray(img_arr) 
 	img.save(save_path)
-	ruta = Direccion
+	ruta = gear_path
 	lista = os.listdir(ruta)
 	print(lista)
 	substats = []
@@ -150,9 +149,9 @@ def takeScreenshot():
 	os.system("cls")
 	myScreenshot = pyautogui.screenshot(region=(60,425, 497, 165))
 	myScreenshot = myScreenshot.resize((1988,660))
-	save_path = Direccion+"\\1.png"
+	save_path = gear_path + "/substats.png"
 	myScreenshot.save(save_path)
-	ruta = Direccion
+	ruta = gear_path
 	lista = os.listdir(ruta)
 	print(lista)
 	substats = []
@@ -181,9 +180,9 @@ def takeScreenshot3():
 	os.system("cls")
 	myScreenshot = pyautogui.screenshot(region=(100,425, 375, 160))
 	myScreenshot = myScreenshot.resize((1500,640))
-	save_path = Direccion+"\\1.png"
+	save_path = gear_path + "/substats.png"
 	myScreenshot.save(save_path)
-	ruta = Direccion
+	ruta = gear_path
 	lista = os.listdir(ruta)
 	print(lista)
 	substats = []
@@ -400,9 +399,9 @@ def nivelGear():
 	os.system("cls")
 	myScreenshot2 = pyautogui.screenshot(region=(112,197, 37, 25))
 	#myScreenshot2 = myScreenshot2.resize((1988,660))
-	save_path = Direccion2+"\\1.png"
+	save_path = gear_path + "/level.png"
 	myScreenshot2.save(save_path)
-	ruta = Direccion2
+	ruta = gear_path
 	lista = os.listdir(ruta)
 	substats = []
 	for elemento in lista:
