@@ -53,8 +53,8 @@ class Application:
         # print(width, height)
 
         # RESCREENSHOT TO CAPTURE SUBSTATS
-        # CURRENTLY WORKS ON INVENTORY(+) GEAR ONLY 
-
+        self.image.screenshot.show()
+        
         text = pytesseract.image_to_string(self.image.gear_path, config = "--psm 6")
         text = text.split('\n')
         self.calculate_from_text(text)

@@ -17,7 +17,7 @@ def calculate(text):
     translator = Translator(to_lang = 'en')
     steps = ""
     score = 0
-
+    print(text)
     for line in text:
         temp = re.split('([-+]?\d+\.\d+)|([-+]?\d+)', line.strip())
         temp = [r.strip() for r in temp if r is not None and r.strip() != '']
